@@ -9,6 +9,10 @@ export const createDefaultRestorationStep = (overrides: Partial<RestorationStep>
   operator_id: 1 as never,
   step_status: "SUBMITTED" as never,
   finished_at: "2026-06-11T09:00:00Z" as never,
+  material_batch_id: null as never,
+  material_qty: 0 as never,
+  requisition_status: "NONE" as never,
+  ledger_version: 1 as never,
   ...overrides
 });
 

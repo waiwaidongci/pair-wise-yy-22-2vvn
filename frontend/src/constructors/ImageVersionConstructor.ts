@@ -9,6 +9,8 @@ export const createDefaultImageVersion = (overrides: Partial<ImageVersion> = {})
   file_path: "file path 1" as never,
   capture_at: "2026-06-11T09:00:00Z" as never,
   note: "note 1" as never,
+  step_id: null as never,
+  requisition_id: null as never,
   ...overrides
 });
 
