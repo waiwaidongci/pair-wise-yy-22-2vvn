@@ -1,14 +1,19 @@
 import type { RestorationPlan } from "../types/RestorationPlan";
 
 export const createDefaultRestorationPlan = (overrides: Partial<RestorationPlan> = {}): RestorationPlan => ({
-  id: 1 as never,
-  relic_id: 1 as never,
-  damage_record_id: 1 as never,
-  plan_title: "plan title 1" as never,
-  method: "method 1" as never,
-  risk_assessment: "risk assessment 1" as never,
-  approval_status: "SUBMITTED" as never,
-  owner_id: 1 as never,
+  id: 0,
+  relic_id: 0,
+  damage_record_id: 0,
+  plan_title: "",
+  method: "",
+  risk_assessment: "",
+  approval_status: "DRAFT",
+  owner_id: 0,
+  material_rechecked: false,
+  recalculated_total: null,
+  ledger_total: null,
+  archived_at: null,
+  archived_by: null,
   ...overrides
 });
 

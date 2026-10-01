@@ -7,4 +7,10 @@ export interface RestorationPlan {
   risk_assessment: string;
   approval_status: string;
   owner_id: number;
+
+  material_rechecked: boolean;
+  recalculated_total: number | null;
+  ledger_total: number | null;
+  archived_at: string | null;
+  archived_by: number | null;
 }

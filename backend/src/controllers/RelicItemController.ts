@@ -1,1 +1,9 @@
-import type { Request, Response } from "express"; import { relicItemService } from "../services/RelicItemService"; export const relicItemController = { list: (_req: Request, res: Response) => res.json(relicItemService.list()), create: (req: Request, res: Response) => res.status(201).json(relicItemService.create(req.body)) };
+import type { Request, Response } from "express";
+import { relicItemService } from "../services/RelicItemService";
+import { asyncHandler } from "./controllerSupport";
+
+export const relicItemController = {
+  list: asyncHandler(async (_req: Request, res: Response) => {
+    res.json(await relicItemService.list());
+  })
+};

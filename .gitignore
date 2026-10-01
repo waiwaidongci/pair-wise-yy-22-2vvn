@@ -11,3 +11,7 @@ __pycache__/
 .pytest_cache/
 target/
 vendor/
+
+# 可恢复领用链落地台账
+backend/data/
+data/

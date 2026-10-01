@@ -10,9 +10,11 @@ import damageRecordRoutes from "./routes/DamageRecordRoutes";
 import restorationPlanRoutes from "./routes/RestorationPlanRoutes";
 import restorationStepRoutes from "./routes/RestorationStepRoutes";
 import imageVersionRoutes from "./routes/ImageVersionRoutes";
+import materialBatchRoutes from "./routes/MaterialBatchRoutes";
+import materialRequisitionRoutes from "./routes/MaterialRequisitionRoutes";
 
 const app = express();
-app.use(cors());
+app.use(cors({ exposedHeaders: ["x-request-id"] }));
 app.use(express.json());
 app.use(requestLoggerMiddleware);
 app.use(authMiddleware);
@@ -23,5 +25,8 @@ app.use("/api/damage-record", damageRecordRoutes);
 app.use("/api/restoration-plan", restorationPlanRoutes);
 app.use("/api/restoration-step", restorationStepRoutes);
 app.use("/api/image-version", imageVersionRoutes);
+app.use("/api/material-batch", materialBatchRoutes);
+app.use("/api/material-requisition", materialRequisitionRoutes);
 app.use(errorHandlerMiddleware);
+
 app.listen(config.port, () => console.log("relic-restore backend listening on", config.port));

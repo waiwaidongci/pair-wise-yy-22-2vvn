@@ -1,21 +1,12 @@
-import { mockData } from "../mocks/seedData";
+import { http } from "./http";
 import type { ImageVersion } from "../types/ImageVersion";
 
-const endpoint = "/api/image-version";
+const endpoint = "/image-version";
 
 export async function listImageVersion(): Promise<ImageVersion[]> {
-  if (typeof fetch !== "undefined" && endpoint.startsWith("/api") && true) {
-    try {
-      const res = await fetch(endpoint);
-      if (res.ok) return await res.json();
-    } catch {
-      // Local mock fallback keeps the UI available during offline review.
-    }
-  }
-  return [...(mockData.imageVersion as unknown as ImageVersion[])];
+  return http.get<ImageVersion[]>(endpoint);
 }
 
-export async function saveImageVersion(payload: ImageVersion) {
-  console.info("save ImageVersion", payload);
-  return payload;
-}
+/** 将影像版本登记为某步骤的凭证（供领用/完成时引用）。 */
+export const bindImageToStep = (imageVersionId: number, stepId: number) =>
+  http.post<ImageVersion>(`${endpoint}/${imageVersionId}/bind-step/${stepId}`, {}, { role: "RESTORER" });
